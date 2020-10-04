@@ -1,8 +1,8 @@
 #pragma once
-#include <string>
 #include <list>
-#include <set>
 #include <map>
+#include <set>
+#include <string>
 
 struct node {
   std::string name_;
@@ -11,17 +11,16 @@ struct node {
 
 class graph {
  public:
-  void append_node(const std::string& name) {
-    nodes_.insert(name, {name});
-  }
+  void append_node(const std::string& name) { nodes_.insert(name, {name}); }
 
-  void connect_nodes(const std::string& node, const std::list<std::string>& nodes) {
+  void connect_nodes(const std::string& node,
+                     const std::list<std::string>& nodes) {
     auto target = nodes_.find(node);
-    if(target == nodes_.end()) {
+    if (target == nodes_.end()) {
       return;
     }
 
-    for(const auto& n : nodes) {
+    for (const auto& n : nodes) {
       target->second.children_.insert(n);
     }
   }
